@@ -1,0 +1,19 @@
+body {
+    background-color: rgb(99, 99, 255);
+
+}
+div {
+   color: rgb(0, 0, 0)
+}
+
+button {
+    background-color:rgb(99, 99, 255);
+    color: rgb(0, 0, 0);
+    
+}
+script {
+    color: rgb(0, 0, 0);
+}
+input {
+    color: rgb(0, 0, 0);
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de numeros romanos</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        
+    </style>
+    <script>
+        function converter() {
+            var num = document.getElementById('numero').value;
+            if(Number.isInteger(Number(num))){
+                converterNumeroRomano(num);
+            } else {
+                converterRomanoNumero(String(num).toUpperCase());
+            }
+        }
+
+        function converterRomanoNumero(romano) {
+                const simboloRomano = {
+                    I: 1,
+                    V: 5,
+                    X: 10,
+                    L: 50,
+                    C: 100,
+                    D: 500,
+                    M: 1000
+                };
+
+                let valor = 0;
+
+                for (let i = 0; i < romano.length; i++) {
+                    const c = simboloRomano[romano[i]];
+                    const n = simboloRomano[romano[i + 1]];
+
+                    if (n  && n  > c) {
+                        valor += n - c;
+                        i++;
+                    } else {
+                        valor += c;
+                    }
+                }
+
+                document.getElementById('resultado').textContent = 'Resultado: ' + valor;
+            }
+
+        function converterNumeroRomano(num) {
+            
+            if(num > 3999){
+                document.getElementById('resultado').textContent = 'Fora do range';
+            } else {
+            const simboloRomano = {
+                M: 1000,
+                CM: 900,
+                D: 500,
+                CD: 400,
+                C: 100,
+                XC: 90,
+                L: 50,
+                XL: 40,
+                X: 10,
+                IX: 9,
+                V: 5,
+                IV: 4,
+                I: 1,
+            };
+
+            let numeroRomano = "";
+
+            for (let simbolo in simboloRomano) {
+                while (num >= simboloRomano[simbolo]) {
+                    numeroRomano += simbolo;
+                    num -= simboloRomano[simbolo];
+                }
+            }
+               document.getElementById('resultado').textContent = 'Resultado: ' + numeroRomano;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <label for="numero" > Digite um número:</label>
+        <input id="numero" name="numero">
+        <button onclick="converter()"> Converter </button>
+        <div id="resultado"></div>
+    </div>
+</body>
+</html>
